@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/number-of-steps-to-reduce-a-number-to-zero/">https://leetcode-cn.com/problems/number-of-steps-to-reduce-a-number-to-zero/</a>
+<script>
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var numberOfSteps  = function(num) {
+  function deal(num, count=0) {
+    if (!num) return count;
+    if (num % 2) {
+      num--;
+    } else {
+      num /= 2;
+    }
+    count++;
+    return deal(num, count);
+  }
+  return deal(num);
+};
+</script>
+</body>
+</html>

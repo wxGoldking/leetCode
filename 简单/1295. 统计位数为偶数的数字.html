@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/find-numbers-with-even-number-of-digits/">https://leetcode-cn.com/problems/find-numbers-with-even-number-of-digits/</a>
+<script>
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findNumbers = function(nums) {
+  return nums.filter((item) => !((item + '').length % 2)).length;
+};
+</script>
+</body>
+</html>

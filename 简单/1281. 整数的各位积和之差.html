@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/">https://leetcode-cn.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/</a>
+<script>
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var subtractProductAndSum = function(n) {
+  let arr = (n + '').split('');
+  let result = arr.reduce((pre, next) => [pre[0] * next, pre[1] + +next], [1, 0]);
+  return result[0] - result[1];
+};
+</script>
+</body>
+</html>

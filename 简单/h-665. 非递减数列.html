@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/non-decreasing-array/">https://leetcode-cn.com/problems/non-decreasing-array/</a>
+<script>
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+ var checkPossibility = function(nums) {
+  let count = 2;
+  for (let i = 0; i < nums.length - 1; i++) {
+    // 第一次遇到非递减数对，是改后一个还是改前一个需作判断
+    if (nums[i] > nums[i+1]) {
+      if(nums[i - 1] === undefined || (nums[i - 1] != undefined && nums[i + 1] > nums[i - 1])) {
+        nums[i] = nums[i+1];
+      } else {
+        nums[i+1] = nums[i];
+      }
+      count--;
+    }
+    if (!count) break;
+  }
+  return !!count;
+};
+</script>
+</body>
+</html>
