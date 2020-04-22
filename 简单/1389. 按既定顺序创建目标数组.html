@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/create-target-array-in-the-given-order/">https://leetcode-cn.com/problems/create-target-array-in-the-given-order/</a>
+<script>
+/**
+ * @param {number[]} nums
+ * @param {number[]} index
+ * @return {number[]}
+ */
+var createTargetArray = function(nums, index) {
+  return index.reduce((pre, next, index) => {
+    pre = [...pre.slice(0, next), nums[index], ...pre.slice(next)];
+    return pre;
+  }, []);
+};
+console.log(createTargetArray([1,2,3,4,0], [0,1,2,3,0]));
+</script>
+</body>
+</html>

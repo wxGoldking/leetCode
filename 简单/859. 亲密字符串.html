@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/buddy-strings/">https://leetcode-cn.com/problems/buddy-strings/</a>
+<script>
+/**
+ * @param {string} A
+ * @param {string} B
+ * @return {boolean}
+ */
+var buddyStrings = function(A, B) {
+  // 长度不一样 false
+  if (A.length !== B.length) return false;
+  // count 记录不同位数，大于2 false；same记录相同的元素
+  let firstPair = [], count = 0, same = [];
+  for (let i = 0; i < A.length; i++) {
+    const sA = A[i];
+    const sB = B[i];
+    sA === sB && same.push(sA);
+    if (sA != sB && !firstPair.length) {
+      firstPair = [sA, sB];
+      count++;
+    } else if (sA === sB) {
+      continue;
+    } else if (sA !== firstPair[1] || sB !== firstPair[0] || count === 2) { // 第二组不同交换判断
+      return false;
+    } else {
+      count++;
+    }
+  }
+  if (count === 0) {
+    // count为0说明 A=== B，相同元素必须有重复才能满足调换
+    return Array.from(new Set(same)).length < same.length;
+  }
+  return count === 2;
+};
+console.log(buddyStrings("aa", "aa"));
+</script>
+</body>
+</html>
