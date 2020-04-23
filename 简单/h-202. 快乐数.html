@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/happy-number/">https://leetcode-cn.com/problems/happy-number/</a><br>
+   举几个例子我们会发现：<br>
+   1. 得到1<br>
+   2. 陷入循环<br>
+   并不会出现数越来越大的，无限大下去的情况， 其实1也可以看做一种循环， 我们要找出最后陷入的循环是不是1. <br><br>
+   方法：使用“快慢指针”思想找出循环：“快指针”每次走两步，<br>
+   “慢指针”每次走一步，当二者相等时，即为一个循环周期。<br>
+   此时，判断是不是因为1引起的循环，是的话就是快乐数，否则不是快乐数。<br>
+   注意：此题不建议用集合记录每次的计算结果来判断是否进入循环，因为这个集合可能大到无法存储；另外，也不建议使用递归，同理，如果递归层次较深，会直接导致调用栈崩溃。不要因为这个题目给出的整数是int型而投机取巧。
+<script>
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isHappy = function(n) {
+    function getSum(num) {
+      let sum = 0;
+      while(num > 0) {
+        let y = num % 10;
+        sum += y * y;
+        num = (num - y) / 10;
+      }
+      return sum;
+    }
+    let slow = getSum(n), fast = getSum(getSum(n));
+    do {
+      slow = getSum(slow);
+      fast = getSum(getSum(fast));
+    }while(slow !== fast)
+
+    return slow === 1;
+};
+console.log(isHappy(19))
+</script>
+</body>
+</html>

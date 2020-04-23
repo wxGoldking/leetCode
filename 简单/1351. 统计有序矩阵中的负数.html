@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/count-negative-numbers-in-a-sorted-matrix/">https://leetcode-cn.com/problems/count-negative-numbers-in-a-sorted-matrix/</a>
+<script>
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+//  // 暴力法
+// var countNegatives = function(grid) {
+//   let array = grid.reduce((pre, next) => [...pre, ...next], []).sort((a, b) => a - b);
+//   for (let i = 0; i < array.length; i++) {
+//     if(array[i] >= 0 ) return i;
+//   }
+//   return array.length;
+// };
+ // 数每一列
+var countNegatives = function(grid) {
+  let count = 0, m = grid.length, n = grid[0].length;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < m; j++) {
+      if (grid[j][i] < 0) {
+        count += m - j;
+        break;
+      }
+    }
+  }
+  return count;
+};
+console.log(countNegatives([
+  [4, 3, 2, 1],
+  [3, 2, 1, -1],
+  [1, 1, -1, -2],
+  [-1, -1, -2, -3]
+]))
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/convert-binary-number-in-a-linked-list-to-integer/">https://leetcode-cn.com/problems/convert-binary-number-in-a-linked-list-to-integer/</a>
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {number}
+ */
+ 
+var getDecimalValue = function(head) {
+  function getArray(node, result = []) {
+    result.unshift(node.val);
+    if (node.next) {
+      return getArray(node.next, result);
+    } else {
+      return result;
+    }
+  }
+  let array = getArray(head);
+  return array.reduce((pre, next, index) => pre + Math.pow(2, index) * next, 0);
+};
+</script>
+</body>
+</html>
