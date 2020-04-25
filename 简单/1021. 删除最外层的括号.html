@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/remove-outermost-parentheses/">https://leetcode-cn.com/problems/remove-outermost-parentheses/</a>
+<script>
+/**
+ * @param {string} S
+ * @return {string}
+ */
+var removeOuterParentheses = function(S) {
+  let floor = 0, indexs = [];
+  for (let i = 0; i < S.length; i++) {
+    const item = S[i];
+    if (item === '(') {
+      floor++;
+    } else {
+      floor--
+    }
+    if(!floor) {
+      indexs.push(i);
+    }
+  }
+  return indexs.reduce((pre, next) => {
+    return {
+      result: pre.result + S.slice(pre.index + 1, next),
+      index: next + 1
+    }
+  }, {result: '', index: 0}).result;
+};
+console.log(removeOuterParentheses("(()())(())"));
+</script>
+</body>
+</html>
