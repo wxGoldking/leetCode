@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/cells-with-odd-values-in-a-matrix/">https://leetcode-cn.com/problems/cells-with-odd-values-in-a-matrix/</a>
+<script>
+/**
+ * @param {number} n
+ * @param {number} m
+ * @param {number[][]} indices
+ * @return {number}
+ */
+var oddCells = function(n, m, indices) {
+  const addCountMap = indices.reduce((pre, next) => {
+    if (!pre.x[next[0]]) {
+      pre.x[next[0]] = 0;
+    }
+    pre.x[next[0]]++;
+    if (!pre.y[next[1]]) {
+      pre.y[next[1]] = 0;
+    }
+    pre.y[next[1]]++;
+    return pre;
+  }, {x: {}, y: {}});
+  const result = [];
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < m; j++) {
+      const sum = ~~addCountMap.x[i] + ~~addCountMap.y[j];
+      sum % 2 !== 0 && result.push(sum);
+    }
+  }
+  return result.length;
+};
+console.log(oddCells(2, 3, [[0,1],[1,1]]))
+</script>
+</body>
+</html>

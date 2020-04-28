@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/to-lower-case/">https://leetcode-cn.com/problems/to-lower-case/</a>
+<script>
+/**
+ * @param {string} str
+ * @return {string}
+ */
+var toLowerCase = function(str) {
+  return [].reduce.call(str, (pre, next) => {
+    const code = next.charCodeAt();
+    if (code >= 65 && code <= 90) {
+      return pre + String.fromCharCode(code + 32);
+    }
+    return pre + next;
+  }, '');
+};
+console.log(toLowerCase("LOVeLY"))
+</script>
+</body>
+</html>
