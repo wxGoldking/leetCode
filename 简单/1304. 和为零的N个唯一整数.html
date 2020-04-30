@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/find-n-unique-integers-sum-up-to-zero/">https://leetcode-cn.com/problems/find-n-unique-integers-sum-up-to-zero/</a>
+   给你一个整数 n，请你返回 任意 一个由 n 个 各不相同 的整数组成的数组，并且这 n 个数相加和为 0 。
+<script>
+/**
+ * @param {number} n
+ * @return {number[]}
+ */
+var sumZero = function(n) {
+  const result = [];
+  if (n % 2) {
+    result.push(0);
+    n--;
+  }
+  for (let i = 0; i < n / 2; i++) {
+    result.push(i + 1);
+    result.unshift(~i);
+  }
+  return result;
+};
+console.log(sumZero(3));
+</script>
+</body>
+</html>
