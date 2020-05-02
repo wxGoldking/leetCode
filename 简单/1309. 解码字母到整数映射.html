@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/decrypt-string-from-alphabet-to-integer-mapping/">https://leetcode-cn.com/problems/decrypt-string-from-alphabet-to-integer-mapping/</a>
+   给你一个字符串 s，它由数字（'0' - '9'）和 '#' 组成。我们希望按下述规则将 s 映射为一些小写英文字符：
+
+字符（'a' - 'i'）分别用（'1' - '9'）表示。
+字符（'j' - 'z'）分别用（'10#' - '26#'）表示。 
+返回映射之后形成的新字符串。
+
+题目数据保证映射始终唯一。
+
+
+<script>
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var freqAlphabets = function(s) {
+  const resultArr = [];
+  let length = s.length;
+  while(length--) {
+    const sItem = s[length];
+    if(sItem === '#') {
+      resultArr.unshift(s[length - 2] + s[length - 1]);
+      length = length - 2;
+    } else {
+      resultArr.unshift(sItem);
+    }
+  }
+  return resultArr.reduce((pre, next) => pre += String.fromCharCode(+next + 96), '');
+};
+console.log(freqAlphabets("10#11#12"));
+</script>
+</body>
+</html>
