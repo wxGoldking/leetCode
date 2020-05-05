@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   给定一个 N 叉树，返回其节点值的后序遍历。
+   <a href="https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/"></a>
+<script>
+/**
+ * // Definition for a Node.
+ * function Node(val,children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
+ */
+
+/**
+ * @param {Node} root
+ * @return {number[]}
+ */
+var postorder = function(root) {
+    if (!root) return [];
+    let result = [root.val];
+    if (!root.children || !root.children.length) return result;
+    return root.children.reduceRight((pre, next) => {
+      return postorder(next).concat(pre);
+    }, result);
+};
+// 迭代
+// 1. 初始化两个栈：s1，s2，并将根节点压入s2
+// 2. 从s2中弹出一个节点，并将其压入s1，同时访问该节点的孩子，如果它有孩子，就把它的孩子顺序放入s2中
+// 3. 重复步骤2，直到s2被清空
+// 4. 步骤3完成后，栈s1内的节点就是按照后续遍历的逆序排列的，那么我们依次弹出s1就可以了
+// var postorder = function(root) {
+//     if (!root) return [];
+//     const res = [];
+//     const [s1, s2] = [[], [root]];
+//     while (s2.length) {
+//         const node = s2.pop();
+//         const children = node.children;
+//         s1.push(node);
+//         if (children && children.length) {
+//             s2.push(...children);
+//         }
+//     }
+//     while (s1.length) {
+//         res.push(s1.pop().val);
+//     }
+//     return res;
+// };
+</script>
+</body>
+</html>

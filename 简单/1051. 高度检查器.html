@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   链接：<a href="https://leetcode-cn.com/problems/height-checker/">https://leetcode-cn.com/problems/height-checker/</a>
+   
+学校在拍年度纪念照时，一般要求学生按照 非递减 的高度顺序排列。
+
+请你返回能让所有学生以 非递减 高度排列的最小必要移动人数。
+
+注意，当一组学生被选中时，他们之间可以以任何可能的方式重新排序，而未被选中的学生应该保持不动。
+<script>
+/**
+ * @param {number[]} heights
+ * @return {number}
+ */
+var heightChecker = function(heights) {
+  const target = [...heights].sort((a, b) => a - b);
+  return heights.reduce((pre, next, index) => {
+    if (next !== target[index]) pre++;
+    return pre;
+  }, 0);
+};
+console.log(heightChecker([1,1,4,2,1,3]));
+</script>
+</body>
+</html>
