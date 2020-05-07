@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  给定一个 N 叉树，返回其节点值的前序遍历。
+   <a href="https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/">https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/</a>
+<script>
+/**
+ * // Definition for a Node.
+ * function Node(val, children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
+ */
+
+/**
+ * @param {Node} root
+ * @return {number[]}
+ */
+var preorder = function(root) {
+    if (!root) return [];
+    const result = [root.val];
+    if (root.children && root.children.length) {
+      return root.children.reduce((arr, item) => {
+        return arr.concat(preorder(item));
+      }, result);
+    }
+    return result;
+};
+</script>
+</body>
+</html>
