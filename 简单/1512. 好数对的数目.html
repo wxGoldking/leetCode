@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  给你一个整数数组 nums 。
+
+如果一组数字 (i,j) 满足 nums[i] == nums[j] 且 i < j ，就可以认为这是一组 好数对 。
+
+返回好数对的数目。
+
+ 
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/number-of-good-pairs
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+<script>
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var numIdenticalPairs = function(nums) {
+  let sum = 0;
+  const obj = {};
+  nums.forEach(item => {
+    if(!obj[item]) {
+      obj[item] = 1;
+    } else {
+      sum += obj[item];
+      obj[item]++;
+    }
+  });
+  return sum;
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  给定一个字符串 S，返回 “反转后的” 字符串，其中不是字母的字符都保留在原地，而所有字母的位置发生反转。
+  https://leetcode-cn.com/problems/reverse-only-letters/
+<script>
+/**
+ * @param {string} S
+ * @return {string}
+ */
+//  方法一
+var reverseOnlyLetters = function(S) {
+  function isLetter(s) {
+    const code = s.charCodeAt();
+    return (code >= 65 && code <= 90) || (code >= 97 && code <= 122);
+  }
+  const originArr = [...S];
+  const letters = originArr.filter(item => isLetter(item));
+  return originArr.map(s => {
+    if (isLetter(s)) {
+      return letters.pop();
+    }
+    return s;
+  }).join('');
+};
+// 方法二
+var reverseOnlyLetters = function(S) {
+  var arr = S.match(/[a-zA-Z]/g)
+  if (arr === null) return S
+  return S.replace(/[a-zA-Z]/g, () => arr.pop())
+}
+</script>
+</body>
+</html>
